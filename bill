@@ -1,0 +1,53 @@
+public class Bill {
+	
+	// final for tax rate
+	public static final double TAXRATE = 0.6;
+	
+	// instance variables
+	private String category;
+	private int mealQty;
+	double mealCost, mealPrice;
+	
+	public Bill (int mealQTemp) {
+		category = null;
+		mealQty = mealQTemp;
+		mealCost = 0;
+		mealPrice = 0;
+		
+	}
+	
+	public double calcAdultCost() {
+		this.category = "Adults";
+		this.mealCost = 39.50;
+		double totA = mealPrice * mealQty;
+		if (mealQty >= 9) {
+			totA -= 8.00;
+		}
+		
+		mealCost = totA;
+		return mealCost;
+	}
+	
+	public double calcChildCost() {
+		this.category = "Children";
+		this.mealPrice = 25.00;
+		double totC = 0;
+		if (mealQty >= 3) {
+			totC = mealPrice * 3; }
+		else
+			totC = mealPrice * mealQty;
+		
+		mealCost = totC;
+		return totC;
+	}
+	
+	static double calcTax (double total) {
+		return total * TAXRATE;
+	}
+	
+	public void display() {
+		System.out.println(" " +category +" " +mealQty +" $" +mealPrice +" $" +mealCost");
+	}
+		
+
+}
